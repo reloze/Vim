@@ -4,14 +4,12 @@
 "  \ V /| | | | | | | | | (__  | |_) | |_| | |  _ <  __/ | (_) / /  __/
 " (_)_/ |_|_| |_| |_|_|  \___| |_.__/ \__, | |_| \_\___|_|\___/___\___|
 "                                     |___/        
-" 
+"
 
 
 " SET
 
 set wrap                      " New string
-
-
 
 set number                    " Number
 
@@ -24,10 +22,13 @@ set shiftwidth=4              " Replace TAB on Space
 
 set listchars=tab:>·,space:·  " SHOW SPACE
 set list                      " SHOW SPACE
-
 set encoding=utf-8            " UTF-8
 
 syntax on                     " Syntaxis
+
+set wildmenu            " For Panels"
+set laststatus=2
+set statusline=[%F%m%r%h%w]\ [format:\ %{&ff},\ type:\ %Y]\ [ascii:\ %3.3b,\ hex:\ 0x%02.2B]\ [line:\ %l\ of\ %L,\ col:\ %v]
 
 "---------------------------------
 
@@ -49,9 +50,9 @@ let g:table_mode_align_char=' '         " Table
 
 " THEME
 
-colorscheme tender       " Use THEME
-" set background=dark
-set t_Co=256             " Use 256 color
+colorscheme tender "railscasts        Use THEME
+set t_Co=256                 " Use 256 color
+"set background=dark
 
 "--------------------------------- 
 
@@ -61,8 +62,8 @@ call plug#begin('~/.vim/plugged')
 
     Plug 'Valloric/YouCompleteMe'
     Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+    Plug 'kien/ctrlp.vim'
     Plug 'jiangmiao/auto-pairs'
-    Plug 'easymotion/vim-easymotion'
     Plug 'terryma/vim-multiple-cursors'
     Plug 'dhruvasagar/vim-table-mode'
 
@@ -73,7 +74,6 @@ call plug#end()
 " MAP
 
 map <C-d> :NERDTreeToggle<CR>
-map <Leader> <Plug>(easymotion-prefix)
 map <C-f> :w<CR>
 map <C-g> :noh<CR>
 map <C-b> :tabnew <CR>
@@ -85,20 +85,16 @@ nnoremap <F3> :set relativenumber<CR>
 nnoremap <F4> :set relativenumber!<CR>
 nnoremap <F5> :set list!<CR>
 
+noremap <C-k> <C-u>
+noremap <C-j> <C-d>
+
+noremap <Up>     <NOP>
+noremap <Down>   <NOP>
+noremap <Left>   <NOP>
+noremap <Right>  <NOP>
+
 map <C-t> :TableModeEnable<CR>
 map <C-e> :TableModeDisable<CR>
 
 "--------------------------------- 
 
-" BINDs
-
-abbr bvar var <CR> i:integer;<CR><BackSpace>
-abbr bfor for i := 1 to 10 do begin <CR><TAB><CR>end;
-abbr bbe begin <CR><TAB><CR>end.
-abbr bar a:array[1..10] of integer;
-abbr bwr write();
-abbr bwrl writeln();
-abbr bre read();
-abbr brel readln();
-
-                    
